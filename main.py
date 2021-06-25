@@ -30,7 +30,6 @@ def main(argv):
 
         print("Close window")
         window.close()
-            
 
 
 if __name__ == "__main__":
