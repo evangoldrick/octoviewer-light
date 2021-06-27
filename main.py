@@ -1,3 +1,4 @@
+import requests
 import api_helper
 import gcode_parser
 import keyReader
@@ -20,14 +21,17 @@ def main(argv):
 
             # add api stuff
 
-            event, values = window.read(timeout=1000)
+            event, values = window.read(timeout=1)
 
             if event == "-QUIT-" or event == sg.WIN_CLOSED:
                 print("EVENT LOOP EXIT")
                 break
-
-            window["progress meter"].update(float(api_helper.getResponse("http://octopi.local/api/job", keyReader.getKey()).json()["progress"]["completion"]))
-
+            try:
+                window["progress meter"].update(float(api_helper.getResponse("http://octopi.local/api/job", keyReader.getKey()).json()["progress"]["completion"]))
+            except requests.exceptions.ConnectionError as e:
+                # Could not connect to api
+                window.Title = "No connection"
+                #window.
         print("Close window")
         window.close()
 
