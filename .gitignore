@@ -1,5 +1,7 @@
 API-KEY.md
 .vscode
+gCodeFiles/*.gcode
+!gCodeFiles/info.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
