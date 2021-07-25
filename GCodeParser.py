@@ -1,3 +1,4 @@
+from GCommand import GCommand
 
 def readAndCountGCode(fileName: str) -> list:
     with open(fileName, "rb") as gCodeFile:
@@ -26,13 +27,19 @@ def getLayerByComments(gCodeWithCounts: list):
     return layers
 
 
-def parseCommand(command: str) -> dict:
-    pass
+def parseCommand(command: str) -> GCommand:
+    temp = command.split(" ")[1:]
+    params = dict()
+    for i in temp:
+        params[i[0]] = float(i[1:])
+
+    return GCommand(command.split(" ")[0], )
 
 
 def getParsedFile(fileName: str):
     return getLayerByComments(readAndCountGCode(fileName))
 
+
 if __name__ == "__main__":
-    print(getLayerByComments(readAndCountGCode("gCodeFiles/AI3M_70mm_SmallRod.gcode")))
+    print(getParsedFile("gCodeFiles/AI3M_70mm_SmallRod.gcode"))
     
