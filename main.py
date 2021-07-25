@@ -1,7 +1,7 @@
 import requests
-import api_helper
-import gcode_parser
-import keyReader
+import ApiHelper
+import GCodeParser
+import KeyReader
 
 import PySimpleGUI as sg
 import os
@@ -27,7 +27,7 @@ def main(argv):
                 print("EVENT LOOP EXIT")
                 break
             try:
-                window["progress meter"].update(float(api_helper.getResponse("http://octopi.local/api/job", keyReader.getKey()).json()["progress"]["completion"]))
+                window["progress meter"].update(float(ApiHelper.getResponse("http://octopi.local/api/job", KeyReader.getKey()).json()["progress"]["completion"]))
             except requests.exceptions.ConnectionError as e:
                 # Could not connect to api
                 window.Title = "No connection"
