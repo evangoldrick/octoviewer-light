@@ -2,7 +2,7 @@ import requests
 import ApiHelper
 import GCodeParser
 import KeyReader
-import simple_gui
+import SimpleGui
 
 import os
 import sys
@@ -13,7 +13,7 @@ def main(argv):
     if "--nogui" in argv:
         pass
     elif "--simple" in argv or FORCE_SIMPLE:
-        simple_gui.start()
+        SimpleGui.start()
 
 
 if __name__ == "__main__":

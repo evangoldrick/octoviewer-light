@@ -1,6 +1,5 @@
-import api_helper
-import key_reader
-
+import ApiHelper
+import KeyReader
 import requests
 import PySimpleGUI as sg
 
@@ -21,7 +20,7 @@ def start():
             print("EVENT LOOP EXIT")
             break
         try:
-            respJSON = api_helper.getResponse("http://octopi.local/api/job", key_reader.getKey()).json()
+            respJSON = ApiHelper.getResponse("http://octopi.local/api/job", KeyReader.getKey()).json()
             
             if respJSON["progress"]["completion"] is not None:
                 window["progress meter"].update(float(respJSON["progress"]["completion"]))
