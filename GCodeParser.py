@@ -41,5 +41,6 @@ def getParsedFile(fileName: str):
 
 
 if __name__ == "__main__":
-    print(getParsedFile("gCodeFiles/AI3M_70mm_SmallRod.gcode"))
+    with open("testOutput.txt", "w") as file:
+        file.write(repr(getParsedFile("gCodeFiles/AI3M_70mm_SmallRod.gcode")))
     
