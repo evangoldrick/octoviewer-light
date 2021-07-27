@@ -1,4 +1,4 @@
-API-KEY.md
+API-KEY.txt
 .vscode
 gCodeFiles/*.gcode
 !gCodeFiles/info.md
