@@ -1,0 +1,11 @@
+- [x] File Reading
+- [x] Separating gcode into layers
+- [ ] Interperating commands into actions
+- [ ] REST API requests
+    - [x] Get Job status
+    - [ ] Get file name
+    - [ ] Download gcode from octopi
+- [ ] GUI
+    - [x] Show print job info
+    - [x] Progress bar
+    - [ ] Draw gcode path

@@ -31,19 +31,6 @@ def getLayerByComments(gCodeWithCounts: list) -> list:
 
     return layers
 
-"""
-def parseCommand(command: str) -> GCommand:
-
-    if command.startswith(";"):
-        return GCommand(";", dict({0:command[1:]}))
-    temp = command.split(" ")[1:]
-    params = dict()
-    for i in temp:
-        params[i[0]] = float(i[1:])
-
-    return GCommand(command.split(" ")[0], params)
-"""
-
 def getParsedFileByComments(fileName: str) -> list:
     return getLayerByComments(readAndCountGCode(fileName))
 
