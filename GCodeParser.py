@@ -5,42 +5,51 @@ def readAndCountGCode(fileName: str) -> list:
         gCode = gCodeFile.readlines()
         byteCount = 0
         gCodeWithCounts = list()
+
         for line in gCode:
-            gCodeWithCounts.append([line.decode('UTF-8').strip(), byteCount]) # Convert line to string and remove b'' from the lines, also add byte counts
+            formattedLine = line.decode(encoding='UTF-8').strip() # Convert to string
+            gCodeCommand = GCommand(formattedLine, byteCount)
+            
+            gCodeWithCounts.append(gCodeCommand) 
             byteCount = byteCount + len(line)
         
         return gCodeWithCounts
 
 
-def getLayerByComments(gCodeWithCounts: list):
-    layerCount = 0
+def getLayerByComments(gCodeWithCounts: list) -> list:
+    currentLayer = 0
     layers = list()
-
     for line in gCodeWithCounts:
-        if line[0].startswith(";Layer:"):
-            layerCount = int(line[0].split(":")[1])
-
-        while len(layers) <= layerCount:
+        if line.isLayerLabel():
+            currentLayer = line.getLayerLabel()
+        
+        while len(layers) <= currentLayer:
             layers.append(list())
-        layers[layerCount].append(line)
-    
+
+        line.layer = currentLayer
+        layers[currentLayer].append(line)
+
     return layers
 
-
+"""
 def parseCommand(command: str) -> GCommand:
+
+    if command.startswith(";"):
+        return GCommand(";", dict({0:command[1:]}))
     temp = command.split(" ")[1:]
     params = dict()
     for i in temp:
         params[i[0]] = float(i[1:])
 
-    return GCommand(command.split(" ")[0], )
+    return GCommand(command.split(" ")[0], params)
+"""
 
-
-def getParsedFile(fileName: str):
+def getParsedFileByComments(fileName: str) -> list:
     return getLayerByComments(readAndCountGCode(fileName))
 
 
 if __name__ == "__main__":
     with open("testOutput.txt", "w") as file:
-        file.write(repr(getParsedFile("gCodeFiles/AI3M_70mm_SmallRod.gcode")))
+        file.write(repr(getParsedFileByComments("gCodeFiles/AI3M_70mm_SmallRod.gcode")))
     
+
