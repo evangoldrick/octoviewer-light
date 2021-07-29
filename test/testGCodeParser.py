@@ -38,7 +38,3 @@ class GCodeParserTest(unittest.TestCase):
     def testGetParsedFileByCommentsCommand(self):
         parsedFile = GCodeParser.getParsedFileByComments(TEST_GCODE_FILE)
         self.assertIn(GCommand("G1 F4500 X109.291 Y93.05 E50.51166", 400, 1), parsedFile[1])
-
-
-if __name__ == "__main__":
-    unittest.main()
