@@ -26,7 +26,7 @@ def start():
                 window["progress meter"].update(float(respJSON["progress"]["completion"]))
                 window["TIME/LAYER"].update("Progress: " + respJSON["progress"]["printTime"] + "/" + respJSON["progress"]["printTimeLeft"])
             else:
-                window.Title = "No connection" # TODO Change this to notify the user that there is no job
+                window.Title = "No job" # TODO Change this to notify the user that there is no job
 
         except requests.exceptions.ConnectionError as e:
             # Could not connect to api

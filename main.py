@@ -3,6 +3,7 @@ import ApiHelper
 import GCodeParser
 import KeyReader
 import SimpleGui
+import TkGui
 
 import os
 import sys
@@ -14,6 +15,8 @@ def main(argv):
         pass
     elif "--simple" in argv or FORCE_SIMPLE:
         SimpleGui.start()
+    else:
+        TkGui.start()
 
 
 if __name__ == "__main__":
