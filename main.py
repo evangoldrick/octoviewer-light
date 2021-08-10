@@ -8,7 +8,7 @@ import TkGui
 import os
 import sys
 
-FORCE_SIMPLE = True
+FORCE_SIMPLE = False
 
 def main(argv):
     if "--nogui" in argv:
