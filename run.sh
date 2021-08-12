@@ -1,2 +1,2 @@
 export DISPLAY=:0
-pythonw main.py
+python3 main.py
