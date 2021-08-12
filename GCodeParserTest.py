@@ -5,10 +5,6 @@ import GCodeParser
 TEST_GCODE_FILE = "testGCode.gcode"
 
 class GCodeParserTest(unittest.TestCase):
-    def testFileReader(self):
-        # TODO update file reading test
-        # self.assertIn()
-        pass
     
     def testGetLayerByComments(self):
         # Test data and expected output
