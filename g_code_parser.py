@@ -1,4 +1,4 @@
-from GCommand import GCommand
+from g_command import GCommand
 
 def readAndCountGCode(fileName: str) -> list:
     with open(fileName, "rb") as gCodeFile:
