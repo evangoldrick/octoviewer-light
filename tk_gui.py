@@ -1,4 +1,5 @@
 import api_helper
+import job_data_daemon
 
 import threading
 import tkinter as tk
@@ -101,7 +102,8 @@ def start():
     
     info = InfoFrame(master=root)
     info.grid(row=0, column=1, sticky="NESW")
-    
+
+    requestsThread = job_data_daemon.JobDaemon()
     root.mainloop()
 
 
