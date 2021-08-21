@@ -90,7 +90,7 @@ class InfoFrame(tk.Frame):
 def start():
     root = tk.Tk()
     root.title("octoviewer-light")
-    root.geometry("1400x800")
+    root.geometry("1200x600")
     root.apiHelper = api_helper.ApiHelper()
     root.columnconfigure(0, weight=1)
     root.columnconfigure(1, weight=1)
