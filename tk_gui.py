@@ -1,7 +1,6 @@
 import api_helper
 import job_data_thread
 
-import threading
 import tkinter as tk
 from tkinter import ttk
 import matplotlib
@@ -88,10 +87,6 @@ class InfoFrame(tk.Frame):
         self.fileName["text"] = "No Connection"
         self.jobPercentage["text"] = "0%"
         
-
-def redrawGui():
-    pass
-
 def start():
     root = tk.Tk()
     root.title("octoviewer-light")
