@@ -4,24 +4,29 @@ import threading
 class JobDaemon:
 
     def __init__(self):
-        self.daemon = threading.Thread(target=self.getData)
+        self.process = threading.Thread(target=self.runFunctions)
         self.functions = []
         self.stayAlive = True
+        self.repeatTime = 1
         
-    def start(self):
-        self.daemon.start()
-    
-    def stop(self):
-        self.stayAlive = False
-        self.daemon.join(timeout=10)
+    def setRepeatTime(self, newTime:int) -> None:
+        self.repeatTime = newTime
 
-    def addFunction(self, func, *args, **kwargs):
+
+    def start(self):
+        self.process.start()
+    
+    def stop(self) -> None:
+        self.stayAlive = False
+        self.process.join(timeout=10)
+
+    def addFunction(self, func, *args, **kwargs) -> None:
         self.functions.append((func, args, kwargs))
 
-    def getData(self):
+    def runFunctions(self) -> None:
         while self.stayAlive:
             for func in self.functions:
                 func[0](*(func[1]), **(func[2]))
-            time.sleep(1)
+            time.sleep(self.repeatTime)
             
             

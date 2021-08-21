@@ -1,5 +1,5 @@
 import api_helper
-import job_data_daemon
+import job_data_thread
 
 import threading
 import tkinter as tk
@@ -19,7 +19,7 @@ class GraphFrame(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.configure(borderwidth=2, relief="sunken")
+        self.configure(borderwidth=2, relief="groove")
         self.create_widgets()
 
     def create_widgets(self):
@@ -89,6 +89,9 @@ class InfoFrame(tk.Frame):
         self.jobPercentage["text"] = "0%"
         
 
+def redrawGui():
+    pass
+
 def start():
     root = tk.Tk()
     root.title("octoviewer-light")
@@ -103,7 +106,7 @@ def start():
     info = InfoFrame(master=root)
     info.grid(row=0, column=1, sticky="NESW")
 
-    requestsThread = job_data_daemon.JobDaemon()
+    requestsThread = job_data_thread.JobDaemon()
     root.mainloop()
 
 
