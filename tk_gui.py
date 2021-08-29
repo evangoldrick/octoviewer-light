@@ -1,7 +1,6 @@
 import api_helper
 import job_data_thread
 
-import threading
 import tkinter as tk
 from tkinter import ttk
 import matplotlib
@@ -53,7 +52,7 @@ class InfoFrame(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.configure(borderwidth=2, relief="sunken")
+        self.configure(borderwidth=2, relief="groove")
         self.create_widgets()
 
     def create_widgets(self):
@@ -106,9 +105,5 @@ def start():
     info = InfoFrame(master=root)
     info.grid(row=0, column=1, sticky="NESW")
 
-    requestsThread = job_data_thread.JobDaemon()
+    requestsThread = job_data_thread.RepeatJobThread()
     root.mainloop()
-
-
-if __name__ == "__main__":
-    start()

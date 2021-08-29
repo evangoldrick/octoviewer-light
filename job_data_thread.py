@@ -1,17 +1,15 @@
 import api_helper
 import time
 import threading
-class JobDaemon:
-
-    def __init__(self):
+class RepeatJobThread:
+    def __init__(self, repeatTime=1):
         self.process = threading.Thread(target=self.runFunctions)
         self.functions = []
         self.stayAlive = True
-        self.repeatTime = 1
+        self.repeatTime = repeatTime
         
     def setRepeatTime(self, newTime:int) -> None:
         self.repeatTime = newTime
-
 
     def start(self):
         self.process.start()
@@ -28,5 +26,5 @@ class JobDaemon:
             for func in self.functions:
                 func[0](*(func[1]), **(func[2]))
             time.sleep(self.repeatTime)
-            
-            
+
+
