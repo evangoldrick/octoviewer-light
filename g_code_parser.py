@@ -33,10 +33,3 @@ def getLayerByComments(gCodeWithCounts: list) -> list:
 
 def getParsedFileByComments(fileName: str) -> list:
     return getLayerByComments(readAndCountGCode(fileName))
-
-
-if __name__ == "__main__":
-    with open("testOutput.txt", "w") as file:
-        file.write(repr(getParsedFileByComments("gCodeFiles/AI3M_70mm_SmallRod.gcode")))
-    
-
